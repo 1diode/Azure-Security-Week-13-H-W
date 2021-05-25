@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Network Diagram](Images/axurelebnetwork.png "Azure Lab Network")
+![Network Diagram](diagrams/axurelabnetwork.png "Azure Lab Network")
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. 
