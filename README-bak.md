@@ -13,12 +13,15 @@ Alternatively, select portions of the yaml file may be used to install only cert
 
   - _TODO: Enter the playbook file._
 
+  ##  use/demonstrate the yaml related directory structure
+
 This document contains the following details:
-- Description of the Topologu
+- Description of the Topology
 - Access Policies
 - ELK Configuration
   - Beats in Use
   - Machines Being Monitored
+
 - How to Use the Ansible Build
 
 
