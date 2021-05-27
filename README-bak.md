@@ -53,8 +53,6 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 
 
 The configuration details of each machine may be found below.
-### _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
-
 
 | Name        | Function | IP Address        | Operating System |
 |-------------|----------|-------------------|------------------|
@@ -151,4 +149,7 @@ SSH into the Ansible control node and follow the steps below:
     Confirm the ELK server web GUI is up by connecting from desktop to http://20.36.45.50:5601/app/kibana 
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
+ansible-playbook /etc/ansible/install-elk.yml
+
 
