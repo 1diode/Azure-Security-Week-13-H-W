@@ -14,7 +14,7 @@ Alternatively, select portions of the yaml file may be used to install only cert
 [I'm a relative reference to a repository file](../blob/master/LICENSE)
 Ansible files .yml
 
-[ansible/install-elk.yml](../blob/main/ansible/install-elk.yml)
+[ansible/install-elk.yml](../main/ansible/install-elk.yml)
 
 ansible/install-pentest.yml
 
