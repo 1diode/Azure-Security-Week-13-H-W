@@ -15,15 +15,21 @@ Alternatively, select portions of the yaml file may be used to install only cert
 Ansible .yml files
 
 Playbook
+
 [ansible/roles/filebeat-playbook.yml](../main/ansible/roles/filebeat-playbook.yml)
+
 [ansible/roles/metricbeat-playbook.yml](../main/ansible/roles/metricbeat-playbook.yml)
 
 Confuguration
+
 [ansible/files/filebeat-config.yml](../main/ansible/files/filebeat-config.yml)
+
 [ansible/files/metricbeat-config.yml](../main/ansible/files/metricbeat-config.yml)
 
 Install
+
 [ansible/install-elk.yml](../main/ansible/install-elk.yml)
+
 [ansible/install-DVWA.yml](../main/ansible/install-DVWA.yml)
 
 This document contains the following details:
