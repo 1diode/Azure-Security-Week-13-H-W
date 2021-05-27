@@ -132,24 +132,23 @@ We have installed the following Beats on these machines: Both webbeat and filebe
 These Beats allow us to collect the following information from each machine:
 
 Kibana Filebeat presents logged information about a hostnames syslog events and their processes, Sudo command use, SSH login attempts and new users & group activity.
-EG. From wihin the Ansible Docker container the command `ansible -m ping all` will trigger an SSH connection to the target machines listed in the hosts file
+EG. From wihin the Ansible Docker container the command `ansible -m ping all` will trigger an SSH connection to the 3x target web serwer machines listed in the hosts file
 These become 3x visible SSH events in Kibana / filebeats - one per web server
 
 Kibana Metricbeat presents System, Host and Container performance metrics
-By installing the stress utility and using the command `stress --cpu 2` a web server can be sent to high CPU which triggers a %99 CPU event for the server in the system and host dashboards
+By installing the stress utility and using the command `stress --cpu 2` a web server can be sent to high CPU. 
+This is observable in the Kibana Metricbeat system and host dashboard as a %99 CPU utilisation event for that server 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
-SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+SSH into the Ansible control node and follow the steps below:
+- Copy the ELK playtbook file to /etc/ansible/ directory
+- Configure/test SSH connectivity from the Ansible docker node to each target server
+- Update the /etc/ansible/hosts file to include the SSH connection command line for each target server
+    Differentiate between [webservers] and [elk] server by using these headings
+- Run the playbook, and navigate to the ELK server to check that the installation worked as expected.
+    Confirm the ELK server web GUI is up by connecting from desktop to http://20.36.45.50:5601/app/kibana 
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
-## can you copy files over a SSH connection or ??? whats needed - try and document it
