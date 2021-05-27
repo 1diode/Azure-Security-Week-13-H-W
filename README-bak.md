@@ -67,14 +67,16 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP address:
+Only the jumpbox machine can accept connections from the Internet.
+Access to this machine is only allowed from the following IP address:
 
 | Rule              | Port#  | Protocol  | SourceIP: (Witheld)  | Destination     | Action  |
 |-------------------|--------|-----------|----------------------|-----------------|---------|
 | PermitSSHfromDesk | 22     | TCP       | (curl ifconfig.me)   | Virtual Network | Permit  |
 
 
-Remote management the machines within the private network can only be accessed by the Jumpbox /Ansible control Node
+Remote management the machines within the private network can only be accessed by the Jumpbox /Ansible control Node on SSH TCP 22
+
 A summary of the access policies in place can be found in the table below.
 
 | Name RedSecGrp      | Publicly Accessible | Allowed IP Addresses |
@@ -85,8 +87,9 @@ A summary of the access policies in place can be found in the table below.
 |                     |                     | =PrivateNetwork      |
 
 
-For external internet access to the DVWA application. 
-Hosted on one of 3 web servers accessible via load balncer - 40.115.64.163
+For external internet access to the DVWA application HTTP 8080 
+Hosted on each of 3 web servers 
+Made highly available via load balncer - 40.115.64.163
 
 | Name RedSecGrp      | Publicly Accessible | Allowed IP Addresses |
 |---------------------|---------------------|----------------------|
