@@ -11,9 +11,10 @@ These files have been tested and used to generate a live ELK deployment on Azure
 They can be used to either recreate the entire deployment pictured above. 
 Alternatively, select portions of the yaml file may be used to install only certain pieces of it, such as Filebeat.
 
+[I'm a relative reference to a repository file](../blob/master/LICENSE)
 Ansible files .yml
 
-ansible/install-elk.yml
+[ansible/install-elk.yml](../blob/master/ansible/install-elk.yml)
 ansible/install-pentest.yml
 
 ansible/files/filebeat-config.yml
