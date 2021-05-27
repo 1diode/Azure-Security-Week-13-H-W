@@ -14,17 +14,17 @@ Alternatively, select portions of the yaml file may be used to install only cert
 
 Ansible .yml files
 
+Playbook
+[ansible/roles/filebeat-playbook.yml](../main/ansible/roles/filebeat-playbook.yml)
+[ansible/roles/metricbeat-playbook.yml](../main/ansible/roles/metricbeat-playbook.yml)
+
+Confuguration
+[ansible/files/filebeat-config.yml](../main/ansible/files/filebeat-config.yml)
+[ansible/files/metricbeat-config.yml](../main/ansible/files/metricbeat-config.yml)
+
+Install
 [ansible/install-elk.yml](../main/ansible/install-elk.yml)
-
-[ansible/install-DVWA.yml](../main/ansible/ansible/install-DVWA.yml)
-
-[ansible/files/filebeat-config.yml](../main/ansible/ansible/files/filebeat-config.yml)
-
-[ansible/files/metricbeat-config.yml](../main/ansible/ansible/files/metricbeat-config.yml)
-
-[ansible/roles/filebeat-playbook.yml](../main/ansible/ansible/roles/filebeat-playbook.yml)
-
-[ansible/roles/metricbeat-playbook.yml](../main/ansible/ansible/roles/metricbeat-playbook.yml)
+[ansible/install-DVWA.yml](../main/ansible/install-DVWA.yml)
 
 This document contains the following details:
 - Description of the Topology
@@ -35,12 +35,11 @@ This document contains the following details:
 
 - How to Use the Ansible Build
 
-
 ### Description of the Topology
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly available via load ballancing, in addition to restricting access to the network by using a jumpbox
+Load balancing ensures that the application will be highly available via load ballancing, in addition to restricting access to the network by using a jumpbox as a remote access gateway
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____. 
 ### (application and sytem files ??)
