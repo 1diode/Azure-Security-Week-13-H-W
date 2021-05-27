@@ -61,7 +61,8 @@ The configuration details of each machine may be found below.
 | web-1       | Web svr  | 10.0.0.5          | Linux            |
 | web-2       | Web svr  | 10.0.0.6          | Linux            |
 | web-3       | Web svr  | 10.0.0.7          | Linux            |
-|             |          |                   |                  |
+| ELK         | ELK Svr  | 10.1.0.4          | Linux            |
+| 
 
 ### Access Policies
 
@@ -85,6 +86,7 @@ A summary of the access policies in place can be found in the table below.
 |                     |                     | 10.0.0.6             |
 |                     |                     | 10.0.0.7             |
 |                     |                     | =PrivateNetwork      |
+| permitSSHjpBoxtoELK | No                  | 10.1.0.4
 
 
 For external internet access to the DVWA application HTTP 8080 on the above 3 web servers
@@ -93,12 +95,12 @@ Made highly available via load balncer - 40.115.64.163 is the rule
 
 | Name RedSecGrp      | Publicly Accessible | Allowed IP Addresses |
 |---------------------|---------------------|----------------------|
-| permitHTTPfromDesk  | yes                 | 40.115.64.163:5601   |                     |                     |                     |                      |
+| permitHTTPfromDesk  | yes                 | 40.115.64.163:5601   |                     |                     |                     | (Load ballancer IP)  |
 
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because Ansible allows for the automation and standardisation of software and configuration changes across multiple machines. The roles and trmplated created for Ansible are reusable.
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because Ansible allows for the automation and standardisation of software and configuration changes across multiple machines. The roles and templates created for Ansible are reusable.
 _
 
 The playbook implements the following tasks:
@@ -116,7 +118,7 @@ The following screenshot displays the result of running `docker ps` after succes
 [logo1]: ../main/diagrams/docker_ps_output.png "Docker PS Output"
 
 ### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
+The ELK server is configured to accept beats information from the following machines:
 
 | Name                | IP Addresses         |
 |---------------------|----------------------|
@@ -129,19 +131,21 @@ We have installed the following Beats on these machines: Both webbeat and filebe
 
 These Beats allow us to collect the following information from each machine:
 
-Kibana Filebeat presents logged information about a hostnames syslog events and their processes, Sudo command use, SSH login attempts and new users & group activity.
-EG. From wihin the Ansible Docker container the command `ansible -m ping all` will trigger an SSH connection to the 3x target web serwer machines listed in the hosts file
+Kibana Filebeat presents logged information about hostname syslog events and their processes, Sudo command use, SSH login attempts and new users & group activity.
+
+EG. From wihin the Ansible Docker container the command `ansible -m ping all` will trigger an SSH connection to the 3x target web server machines that are listed in the hosts file
 These become 3x visible SSH events in Kibana / filebeats - one per web server
 
 Kibana Metricbeat presents System, Host and Container performance metrics
-By installing the stress utility and using the command `stress --cpu 2` a web server can be sent to high CPU. 
-This is observable in the Kibana Metricbeat system and host dashboard as a %99 CPU utilisation event for that server 
+
+EG Installing the stress utility and using the command `stress --cpu 2` will send the server to high CPU. 
+This is observable in the Kibana Metricbeat system and host dashboard as a %99 CPU utilisation event for that server
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the Ansible control node and follow the steps below:
-- Copy the ELK playtbook file to /etc/ansible/ directory
+- Using curl copy the ELK config file to /etc/ansible/ directory
 - Configure/test SSH connectivity from the Ansible docker node to each target server
 - Update the /etc/ansible/hosts file to include the SSH connection command line for each target server
     Differentiate between [webservers] and [elk] server by using these headings
@@ -149,10 +153,9 @@ SSH into the Ansible control node and follow the steps below:
     Confirm the ELK server web GUI is up by connecting from desktop to http://20.36.45.50:5601/app/kibana 
 
 Test connectivity:  ansible all -m ping
-
 curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml
 
-Perform configuration
+Edit configuration - if new servers
 
 Run playbook:       ansible-playbook /etc/ansible/install-filebeat.yml
 
