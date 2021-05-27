@@ -113,8 +113,8 @@ The playbook implements the following tasks:
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ![Docker PS Output][logo]
-
-[logo]: https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/docker_ps_output.png "Docker PS Output.png"
+        https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/docker_ps_output.png  
+"Docker PS Output.png"
 
 # (../main/ansible/files/metricbeat-config.yml
 
