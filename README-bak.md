@@ -69,8 +69,9 @@ The machines on the internal network are not exposed to the public Internet.
 
 Only the jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP address:
 
-Rule:             Port# Protocol: SourceIP: (Witheld)           Destination:      Action:
-PermitSSHfromDesk  22    TCP      (curl ifconfig.me)            Virtual Network   Permit
+| Rule              | Port#  | Protocol  | SourceIP: (Witheld)  | Destination     | Action  |
+|-------------------|--------|-----------|----------------------|-----------------|---------|
+| PermitSSHfromDesk | 22     | TCP       | (curl ifconfig.me)   | Virtual Network | Permit  |
 
 
 Remote management the machines within the private network can only be accessed by the Jumpbox /Ansible control Node
@@ -85,13 +86,11 @@ A summary of the access policies in place can be found in the table below.
 
 
 For external internet access to the DVWA application. 
-Hosted on one of 3 web servers accessible via load balncer
+Hosted on one of 3 web servers accessible via load balncer - 40.115.64.163
 
 | Name RedSecGrp      | Publicly Accessible | Allowed IP Addresses |
 |---------------------|---------------------|----------------------|
 | permitHTTPfromDesk  | yes                 | 40.115.64.163:5601   |                     |                     |                     |                      |
-|                     |                     | 10.0.0.7             |
-
 
 
 ### Elk Configuration
