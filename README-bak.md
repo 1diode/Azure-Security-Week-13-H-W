@@ -111,9 +111,9 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![Docker PS Output][logo]
+![Docker PS Output][logo1]
 
-[logo]: https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/psoutput/docker_ps_output.png "Docker PS Output"
+[logo1]: https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/psoutput/docker_ps_output.png "Docker PS Output"
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
