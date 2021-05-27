@@ -28,6 +28,8 @@ Confugurations:
 
 Installation:
 
+[ansible/hosts](../main/ansible/hosts.txt)
+
 [ansible/install-elk.yml](../main/ansible/install-elk.yml)
 
 [ansible/install-DVWA.yml](../main/ansible/install-DVWA.yml)
