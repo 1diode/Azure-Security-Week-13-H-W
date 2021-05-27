@@ -15,12 +15,15 @@ Alternatively, select portions of the yaml file may be used to install only cert
 Ansible files .yml
 
 [ansible/install-elk.yml](../blob/master/ansible/install-elk.yml)
+
 ansible/install-pentest.yml
 
 ansible/files/filebeat-config.yml
+
 ansible/files/metricbeat-config.yml
 
 ansible/roles/filebeat-playbook.yml
+
 ansible/roles/metricbeat-playbook.yml
 
 This document contains the following details:
