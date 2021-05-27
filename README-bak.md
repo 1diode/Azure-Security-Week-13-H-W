@@ -4,7 +4,7 @@ The files in this repository were used to configure the network depicted below.
 
 ![Azure Lab Network][logo]
 
-[logo]: https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/azurelabnetwork.png "Azure Lab Network"
+[logo]: https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/network/azurelabnetwork.png "Azure Lab Network"
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. 
@@ -113,7 +113,7 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ![Docker PS Output][logo]
 
-[logo]: https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/docker_ps_output.png "Docker PS Output"
+[logo]: https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/psoutput/docker_ps_output.png "Docker PS Output"
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
