@@ -14,19 +14,19 @@ Alternatively, select portions of the yaml file may be used to install only cert
 
 Ansible .yml files
 
-Playbook
+Playbooks:
 
 [ansible/roles/filebeat-playbook.yml](../main/ansible/roles/filebeat-playbook.yml)
 
 [ansible/roles/metricbeat-playbook.yml](../main/ansible/roles/metricbeat-playbook.yml)
 
-Confuguration
+Confugurations:
 
 [ansible/files/filebeat-config.yml](../main/ansible/files/filebeat-config.yml)
 
 [ansible/files/metricbeat-config.yml](../main/ansible/files/metricbeat-config.yml)
 
-Install
+Installation:
 
 [ansible/install-elk.yml](../main/ansible/install-elk.yml)
 
@@ -87,9 +87,9 @@ A summary of the access policies in place can be found in the table below.
 |                     |                     | =PrivateNetwork      |
 
 
-For external internet access to the DVWA application HTTP 8080 
-Hosted on each of 3 web servers 
-Made highly available via load balncer - 40.115.64.163
+For external internet access to the DVWA application HTTP 8080 on the above 3 web servers
+
+Made highly available via load balncer - 40.115.64.163 is the rule
 
 | Name RedSecGrp      | Publicly Accessible | Allowed IP Addresses |
 |---------------------|---------------------|----------------------|
@@ -98,17 +98,25 @@ Made highly available via load balncer - 40.115.64.163
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because Ansible allows for the automation and standardisation of software and configuration changes across multiple machines. The roles and trmplated created for Ansible are reusable.
+_
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Establish an SSH connection to the ELK server from the Ansible control node
+- Employ apt to install Docker, Python# and PIP in order
+- Via command line command and configure an increase of available virtual memory 
+    (Especially for VM with only 4gig ram)
+- Download and launch an ELK docker container and specify required TCP port number ranges
+- Configure systemd to automatically restart Docker after a server reboot
+
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![Docker PS Output][logo]
+
+[logo]: https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/docker_ps_output.png "Docker PS Output.png"
+
+# (../main/ansible/files/metricbeat-config.yml
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
