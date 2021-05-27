@@ -4,7 +4,7 @@ The files in this repository were used to configure the network depicted below.
 
 ![Azure Lab Network][logo]
 
-[logo]: ../main/diagrams/network/azurelabnetwork.png "Azure Lab Network"
+[logo]: ../main/diagrams/network/azurelabnetworkx.png "Azure Lab Network"
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. 
@@ -51,7 +51,7 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
+### _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 
 | Name        | Function | IP Address        | Operating System |
