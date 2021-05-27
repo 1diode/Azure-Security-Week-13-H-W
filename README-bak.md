@@ -148,8 +148,8 @@ SSH into the Ansible control node and follow the steps below:
 - Run the playbook, and navigate to the ELK server to check that the installation worked as expected.
     Confirm the ELK server web GUI is up by connecting from desktop to http://20.36.45.50:5601/app/kibana 
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+Test connectivity:  ansible all -m ping
 
-ansible-playbook /etc/ansible/install-elk.yml
+Run playbook:       ansible-playbook /etc/ansible/install-elk.yml
 
 
