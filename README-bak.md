@@ -4,7 +4,7 @@ The files in this repository were used to configure the network depicted below.
 
 ![Azure Lab Network][logo]
 
-[logo]: ../main/diagrams/network/azurelabnetwork.png "Azure Lab Network"
+[logo]: ../main/diagrams/azurelabnetwork.png "Azure Lab Network"
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. 
@@ -113,24 +113,34 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ![Docker PS Output][logo1]
 
-[logo1]: https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/psoutput/docker_ps_output.png "Docker PS Output"
+[logo1]: ../main/diagrams/docker_ps_output.png "Docker PS Output"
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
 
-We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+| Name                | IP Addresses         |
+|---------------------|----------------------|
+| web-1               | 10.0.0.5             |
+| web-2               | 10.0.0.6             |
+| web-3               | 10.0.0.7             |
+
+
+We have installed the following Beats on these machines: Both webbeat and filebeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+
+Kibana Filebeat presents logged information about a hostnames syslog events and their processes, Sudo command use, SSH login attempts and new users & group activity.
+EG. From wihin the Ansible Docker container the command `ansible -m ping all` will trigger an SSH connection to the target machines listed in the hosts file
+These become 3x visible SSH events in Kibana / filebeats - one per web server
+
+Kibana Metricbeat presents System, Host and Container performance metrics
+By installing the stress utility and using the command `stress --cpu 2` a web server can be sent to high CPU which triggers a %99 CPU event for the server in the system and host dashboards
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
+- Copy the _____ file to _____.- Update the _____ file to include...
 - Run the playbook, and navigate to ____ to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
