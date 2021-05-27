@@ -47,38 +47,52 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly available via load ballancing, in addition to restricting access to the network by using a jumpbox as a remote access gateway
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____. 
-### (application and sytem files ??)
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the performance metrics and system logs. 
+
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+
+| Name        | Function | IP Address        | Operating System |
+|-------------|----------|-------------------|------------------|
+| Jump Box    | Gateway  | 10.0.0.4          | Linux            |
+|             |          | 191.239.183.201   |                  |
+| web-1       | Web svr  | 10.0.0.5          | Linux            |
+| web-2       | Web svr  | 10.0.0.6          | Linux            |
+| web-3       | Web svr  | 10.0.0.7          | Linux            |
+|             |          |                   |                  |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP address:
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Rule:             Port# Protocol: SourceIP: (Witheld)           Destination:      Action:
+PermitSSHfromDesk  22    TCP      (curl ifconfig.me)            Virtual Network   Permit
 
+
+Remote management the machines within the private network can only be accessed by the Jumpbox /Ansible control Node
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name RedSecGrp      | Publicly Accessible | Allowed IP Addresses |
+|---------------------|---------------------|----------------------|
+| permitSSHjpboxtoPvt | No                  | 10.0.0.5             |
+|                     |                     | 10.0.0.6             |
+|                     |                     | 10.0.0.7             |
+|                     |                     | =PrivateNetwork      |
+
+
+For external internet access to the DVWA application. 
+Hosted on one of 3 web servers accessible via load balncer
+
+| Name RedSecGrp      | Publicly Accessible | Allowed IP Addresses |
+|---------------------|---------------------|----------------------|
+| permitHTTPfromDesk  | yes                 | 40.115.64.163:5601   |                     |                     |                     |                      |
+|                     |                     | 10.0.0.7             |
+
+
 
 ### Elk Configuration
 
