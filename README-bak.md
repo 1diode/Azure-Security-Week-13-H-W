@@ -109,14 +109,9 @@ The playbook implements the following tasks:
 - Download and launch an ELK docker container and specify required TCP port number ranges
 - Configure systemd to automatically restart Docker after a server reboot
 
-
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![Docker PS Output][logo]
-        https://github.com/1diode/Azure-Security-Week-13-H-W/blob/main/diagrams/docker_ps_output.png  
-"Docker PS Output.png"
 
-# (../main/ansible/files/metricbeat-config.yml
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
