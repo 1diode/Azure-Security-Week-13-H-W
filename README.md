@@ -145,18 +145,24 @@ This is observable in the Kibana Metricbeat system and host dashboard as a %99 C
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the Ansible control node and follow the steps below:
-- Using curl copy the ELK config file to /etc/ansible/ directory
-- Configure/test SSH connectivity from the Ansible docker node to each target server
-- Update the /etc/ansible/hosts file to include the SSH connection command line for each target server
-    Differentiate between [webservers] and [elk] server by using these headings
-- Run the playbook, and navigate to the ELK server to check that the installation worked as expected.
-    Confirm the ELK server web GUI is up by connecting from desktop to http://20.36.45.50:5601/app/kibana 
 
-Test connectivity:  ansible all -m ping
+- Using curl copy the ELK config file to /etc/ansible/ directory
 curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml
 
-Edit configuration - if new servers
+- Configure/test SSH connectivity from the Ansible docker node to each target server
+Create ssh keygen key pair without a password
+Within azure password and security place the publick key on all 3 x web VM
 
-Run playbook:       ansible-playbook /etc/ansible/install-filebeat.yml
+- Update the /etc/ansible/hosts file to include the SSH connection command line for each target server
+    Differentiate between `[webservers]` and `[elk]` server by using these headings
+Test connectivity from within the Ansible container:  ansible all -m ping
+This generates a SSH connection to each web server and the ELK server and produces a response per server
+EH: sysadmin@10.0.0.9 | SUCCESS => {
+     "changed": false,
+     "ping": "pong"
+
+- Run the ELK installation playbook, and navigate to the ELK server to check that the installation worked as expected.    ansible-playbook /etc/ansible/install-elk.yml
+
+    Confirm the ELK server web GUI is up by connecting from desktop to http://20.36.45.50:5601/app/kibana 
 
 
