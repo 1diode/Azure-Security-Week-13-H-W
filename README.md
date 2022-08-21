@@ -8,8 +8,8 @@ The files in this repository were used to configure the network depicted below.
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. 
-They can be used to either recreate the entire deployment pictured above. 
-Alternatively, select portions of the yaml file may be used to install only certain pieces of it, such as Filebeat.
+They can be used to recreate the entire deployment pictured above. 
+Alternatively, select portions of the yaml file may be used to install pieces of it, such as Filebeat.
 
 
 Ansible .yml files
@@ -47,7 +47,8 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly available via load ballancing, in addition to restricting access to the network by using a jumpbox as a remote access gateway
+Load balancing ensures that the application will be highly available
+ Access to the network is restricted by using a jumpbox as a remote access gateway via SSH
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the performance metrics and system logs. 
 
@@ -69,16 +70,16 @@ The configuration details of each machine may be found below.
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the jumpbox machine can accept connections from the Internet.
-Access to this machine is only allowed from the following IP address:
+Access to this machine is allowed only from the following IP address:
 
 | Rule              | Port#  | Protocol  | SourceIP: (Witheld)  | Destination     | Action  |
 |-------------------|--------|-----------|----------------------|-----------------|---------|
 | PermitSSHfromDesk | 22     | TCP       | (curl ifconfig.me)   | Virtual Network | Permit  |
 
 
-Remote management the machines within the private network can only be accessed by the Jumpbox /Ansible control Node on SSH TCP 22
+Remote management of the machines within the private network can only be accessed by the Jumpbox /Ansible control Node on SSH TCP 22
 
-A summary of the access policies in place can be found in the table below.
+This table is a summary of the access policies in place.
 
 | Name RedSecGrp      | Publicly Accessible | Allowed IP Addresses |
 |---------------------|---------------------|----------------------|
@@ -103,15 +104,15 @@ Made highly available via load balncer - 40.115.64.163 is the rule
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because Ansible allows for the automation and standardisation of software and configuration changes across multiple machines. The roles and templates created for Ansible are reusable.
 _
 
-The playbook implements the following tasks:
+The playbook implements the following tasks in order:
 - Establish an SSH connection to the ELK server from the Ansible control node
 - Employ apt to install Docker, Python# and PIP in order
-- Via command line command and configure an increase of available virtual memory 
+- Via inserted command line configure an increase of available virtual memory 
     (Especially for VM with only 4gig ram)
-- Download and launch an ELK docker container and specify required TCP port number ranges
+- Download and launch an ELK docker container and specify the required TCP port number ranges
 - Configure systemd to automatically restart Docker after a server reboot
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+This screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ![Docker PS Output][logo1]
 
@@ -127,9 +128,9 @@ The ELK server is configured to accept beats information from the following mach
 | web-3               | 10.0.0.7             |
 
 
-We have installed the following Beats on these machines: Both webbeat and filebeat
+I have installed the following Beats on these machines: Both webbeat and filebeat
 
-These Beats allow us to collect the following information from each machine:
+These Beats allow me to collect the following information from each machine:
 
 Kibana Filebeat presents logged information about hostname syslog events and their processes, Sudo command use, SSH login attempts and new users & group activity.
 
@@ -142,7 +143,8 @@ EG Installing the stress utility and using the command `stress --cpu 2` will sen
 This is observable in the Kibana Metricbeat system and host dashboard as a %99 CPU utilisation event for that server
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+In order to use the playbook, I will need to have an Ansible control node already configured. 
+Using this control node: 
 
 SSH into the Ansible control node and follow the steps below:
 
@@ -151,18 +153,20 @@ curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/r
 
 - Configure/test SSH connectivity from the Ansible docker node to each target server
 Create ssh keygen key pair without a password
-Within azure password and security place the publick key on all 3 x web VM
+Within azure 'password and security' place the public key on all 3 x web VM 
 
 - Update the /etc/ansible/hosts file to include the SSH connection command line for each target server
     Differentiate between `[webservers]` and `[elk]` server by using these headings
 Test connectivity from within the Ansible container:  ansible all -m ping
 This generates a SSH connection to each web server and the ELK server and produces a response per server
-EH: sysadmin@10.0.0.9 | SUCCESS => {
+EG: sysadmin@10.0.0.9 | SUCCESS => {
      "changed": false,
      "ping": "pong"
 
 - Run the ELK installation playbook, and navigate to the ELK server to check that the installation worked as expected.    ansible-playbook /etc/ansible/install-elk.yml
 
     Confirm the ELK server web GUI is up by connecting from desktop to http://20.36.45.50:5601/app/kibana 
+
+    END
 
 
