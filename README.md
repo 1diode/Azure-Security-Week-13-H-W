@@ -34,7 +34,7 @@ Installation:
 
 [ansible/install-DVWA.yml](../main/ansible/install-DVWA.yml)
 
-This document contains the following details:
+### Table of Contents:
 - Description of the Topology
 - Access Policies
 - ELK Configuration
